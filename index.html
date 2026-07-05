@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krishnanshu Grover - SAP ABAP Developer</title>
+<meta name="description" content="SAP ABAP Developer with 5+ years of experience. S/4HANA Migration, Clean Core, RICEF Development. Open to global opportunities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1B2A4A;--steel:#4A7DAD;--light:#F7F8FA;--white:#FFFFFF;--gray:#6B7280;--border:#E5E7EB;--text:#1F2937;--accent:#2563EB}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.7;background:var(--white)}
+
+/* NAV */
+.nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100;padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:60px}
+.nav-logo{font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:var(--navy);text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--gray);font-size:13px;font-weight:500;letter-spacing:0.02em;transition:color 0.2s}
+.nav-links a:hover{color:var(--navy)}
+.menu-btn{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 2rem 60px;background:linear-gradient(135deg,var(--white) 60%,#EEF2F7 100%)}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:60px;align-items:center;width:100%}
+.hero-badge{display:inline-block;background:#EEF2F7;color:var(--steel);font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:0.05em}
+.hero h1{font-family:'Sora',sans-serif;font-size:48px;font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:16px}
+.hero-title{font-size:18px;color:var(--steel);font-weight:500;margin-bottom:24px}
+.hero-text{font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:32px;max-width:540px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all 0.2s}
+.btn-primary{background:var(--navy);color:var(--white)}
+.btn-primary:hover{background:#243757}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-outline:hover{background:var(--navy);color:var(--white)}
+.hero-social{display:flex;gap:16px}
+.hero-social a{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--gray);font-size:14px;transition:all 0.2s}
+.hero-social a:hover{border-color:var(--navy);color:var(--navy);background:#EEF2F7}
+.hero-photo{width:340px;height:340px;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(27,42,74,0.15)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+
+/* SECTIONS */
+.section{padding:80px 2rem}
+.section-alt{background:var(--light)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel);margin-bottom:8px}
+.section-title{font-family:'Sora',sans-serif;font-size:32px;font-weight:700;color:var(--navy);margin-bottom:40px}
+.accent-bar{width:48px;height:3px;background:var(--steel);border-radius:2px;margin-bottom:12px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-text{font-size:15px;color:var(--gray);line-height:1.8}
+.about-cards{display:flex;flex-direction:column;gap:16px}
+.about-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
+.about-card h4{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:8px}
+.about-card p{font-size:13px;color:var(--gray);line-height:1.6}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.stat{text-align:center;padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--border)}
+.stat-num{font-family:'Sora',sans-serif;font-size:28px;font-weight:700;color:var(--navy)}
+.stat-label{font-size:12px;color:var(--gray);margin-top:4px}
+
+/* EXPERIENCE */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:48px}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-dot{position:absolute;left:-32px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--steel);border:3px solid var(--white);box-shadow:0 0 0 2px var(--steel)}
+.timeline-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+.timeline-role{font-family:'Sora',sans-serif;font-size:18px;font-weight:600;color:var(--navy)}
+.timeline-date{font-size:12px;color:var(--steel);font-weight:500;background:#EEF2F7;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.timeline-company{font-size:14px;color:var(--steel);font-weight:500;margin-bottom:16px}
+.project-tag{display:inline-block;font-size:11px;font-weight:600;color:var(--navy);background:#E8EDF4;padding:3px 10px;border-radius:4px;margin-bottom:6px}
+.timeline-desc{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:12px}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.project-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.2s}
+.project-card:hover{border-color:var(--steel);box-shadow:0 8px 24px rgba(27,42,74,0.08)}
+.project-card h3{font-family:'Sora',sans-serif;font-size:16px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.project-type{font-size:12px;color:var(--steel);font-weight:500;margin-bottom:12px}
+.project-card p{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px}
+.project-outcomes{list-style:none;margin-bottom:16px}
+.project-outcomes li{font-size:12px;color:var(--gray);padding:4px 0;padding-left:16px;position:relative}
+.project-outcomes li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--steel)}
+.tech-pills{display:flex;flex-wrap:wrap;gap:6px}
+.tech-pill{font-size:11px;color:var(--navy);background:#EEF2F7;padding:3px 10px;border-radius:4px;font-weight:500}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.skill-group{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px}
+.skill-group h3{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:16px}
+.skill-item{margin-bottom:14px}
+.skill-item:last-child{margin-bottom:0}
+.skill-name{display:flex;justify-content:space-between;font-size:13px;color:var(--gray);margin-bottom:6px}
+.skill-bar{height:6px;background:#EEF2F7;border-radius:3px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--navy),var(--steel));border-radius:3px;transition:width 1s ease-out}
+
+/* CERTIFICATIONS */
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.cert-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s}
+.cert-card:hover{border-color:var(--steel);box-shadow:0 8px 24px rgba(27,42,74,0.08)}
+.cert-img{width:100%;height:180px;object-fit:cover;object-position:center;border-bottom:1px solid var(--border)}
+.cert-body{padding:16px 20px}
+.cert-body h3{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.cert-body p{font-size:12px;color:var(--gray);margin-bottom:10px}
+.cert-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--steel);font-weight:500;text-decoration:none}
+.cert-link:hover{color:var(--navy);text-decoration:underline}
+
+/* ACHIEVEMENTS */
+.achieve-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.achieve-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.achieve-card img{width:100%;height:220px;object-fit:cover;border-bottom:1px solid var(--border)}
+.achieve-body{padding:20px 24px}
+.achieve-badge{display:inline-block;font-size:11px;font-weight:600;color:var(--steel);background:#EEF2F7;padding:3px 10px;border-radius:4px;margin-bottom:8px}
+.achieve-body h3{font-family:'Sora',sans-serif;font-size:15px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.achieve-body .org{font-size:12px;color:var(--steel);margin-bottom:8px}
+.achieve-body p{font-size:13px;color:var(--gray);line-height:1.6}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edu-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px}
+.edu-card h3{font-family:'Sora',sans-serif;font-size:16px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.edu-card .school{font-size:13px;color:var(--steel);font-weight:500;margin-bottom:12px}
+.edu-list{list-style:none}
+.edu-list li{font-size:13px;color:var(--gray);padding:3px 0 3px 16px;position:relative}
+.edu-list li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--steel)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.contact-form{padding:40px;background:var(--white)}
+.contact-form h3{font-family:'Sora',sans-serif;font-size:20px;font-weight:600;color:var(--navy);margin-bottom:24px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:12px;font-weight:500;color:var(--gray);margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;transition:border-color 0.2s;background:var(--light)}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--steel);background:var(--white)}
+.form-group textarea{height:120px;resize:vertical}
+.btn-send{width:100%;padding:12px;background:var(--navy);color:var(--white);border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.2s}
+.btn-send:hover{background:#243757}
+.contact-info{padding:40px;background:var(--navy);color:var(--white)}
+.contact-info h3{font-family:'Sora',sans-serif;font-size:20px;font-weight:600;margin-bottom:8px}
+.contact-info .sub{font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:32px}
+.info-row{display:flex;align-items:center;gap:14px;margin-bottom:20px;font-size:14px;color:rgba(255,255,255,0.85);transition:transform 0.2s}
+.info-row:hover{transform:translateX(4px)}
+.info-icon{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.info-row a{color:rgba(255,255,255,0.85);text-decoration:none}
+.info-row a:hover{color:var(--white)}
+.contact-social{display:flex;gap:12px;margin-top:32px}
+.contact-social a{width:40px;height:40px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;transition:all 0.2s}
+.contact-social a:hover{border-color:var(--white);color:var(--white);background:rgba(255,255,255,0.1)}
+
+/* FOOTER */
+.footer{text-align:center;padding:32px 2rem;border-top:1px solid var(--border);background:var(--white)}
+.footer p{font-size:13px;color:var(--gray)}
+.footer-tag{font-family:'Sora',sans-serif;font-size:14px;color:var(--navy);font-weight:500;margin-bottom:8px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero h1{font-size:32px}
+  .hero-text{margin:0 auto 32px}
+  .hero-btns{justify-content:center}
+  .hero-social{justify-content:center}
+  .hero-photo{width:260px;height:260px;margin:0 auto}
+  .about-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  .projects-grid,.cert-grid,.achieve-grid,.edu-grid,.skills-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--white);flex-direction:column;padding:16px 2rem;border-bottom:1px solid var(--border);gap:16px}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .section-title{font-size:26px}
+}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="nav-inner">
+<a href="#" class="nav-logo">KG</a>
+<button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#achievements">Achievements</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<div>
+<span class="hero-badge">OPEN TO GLOBAL OPPORTUNITIES</span>
+<h1>Krishnanshu Grover</h1>
+<p class="hero-title">SAP ABAP Developer  &middot;  S/4HANA Migration  &middot;  Clean Core</p>
+<p class="hero-text">SAP ABAP Developer with 5+ years of hands-on experience building and migrating enterprise SAP systems for Apple Inc. and Consumers Energy. I specialise in S/4HANA migration, Clean Core remediation, and RICEF development - with a track record of proposing and delivering automation initiatives that cut costs and eliminate manual effort.</p>
+<div class="hero-btns">
+<a href="#about" class="btn btn-primary">Learn more about me</a>
+<a href="#contact" class="btn btn-outline">Get in touch</a>
+</div>
+<div class="hero-social">
+<a href="https://linkedin.com/in/krishnanshugrover" target="_blank" title="LinkedIn">in</a>
+<a href="mailto:contact@krishnanshu.tech" title="Email">@</a>
+<a href="https://krishnanshu.tech" title="Website">W</a>
+</div>
+</div>
+<div class="hero-photo">
+<img src="images/dp.jpg" alt="Krishnanshu Grover">
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section-alt" id="about">
+<div class="section-inner">
+<div class="accent-bar"></div>
+<p class="section-label">About me</p>
+<h2 class="section-title">Who I am</h2>
+<div class="about-grid">
+<div>
+<p class="about-text">I am an SAP ABAP Developer currently working as a Consultant at Wipro, deployed on Apple Inc.'s S/4HANA migration programme. My day-to-day involves code retrofitting across ECC and S/4HANA landscapes, Clean Core remediation using ATC, and delivering RICEF developments and CDS Views to Apple's enterprise standards.</p>
+<br>
+<p class="about-text">Before this, I spent close to 4 years at HCL Technologies working on Consumers Energy's IS Utilities platform - where I built automation tools, led a data archiving project that cut database storage by 50%, and worked across SD, MM, FICA and Billing modules. I hold two SAP certifications (ABAP Cloud and CAP) and degrees in MCA and BCA from SASTRA University.</p>
+<br>
+<p class="about-text">I am now looking for senior ABAP developer and technical lead roles with onsite placement - anywhere in the world.</p>
+</div>
+<div class="about-cards">
+<div class="about-card">
+<h4>Mission</h4>
+<p>To bring deep technical ABAP expertise and practical delivery experience to enterprise SAP programmes that need things built right - not just documented.</p>
+</div>
+<div class="about-card">
+<h4>Vision</h4>
+<p>To grow into a technical leadership role on global S/4HANA transformation programmes, contributing both hands-on development and architectural decision-making.</p>
+</div>
+</div>
+</div>
+<div class="stat-row">
+<div class="stat fade-in"><div class="stat-num">5+</div><div class="stat-label">Years experience</div></div>
+<div class="stat fade-in"><div class="stat-num">2</div><div class="stat-label">Global clients</div></div>
+<div class="stat fade-in"><div class="stat-num">8</div><div class="stat-label">Key projects</div></div>
+<div class="stat fade-in"><div class="stat-num">5</div><div class="stat-label">SAP certifications</div></div>
+</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+<div class="section-inner">
+<div class="accent-bar"></div>
+<p class="section-label">Work experience</p>
+<h2 class="section-title">Where I have worked</h2>
+<div class="timeline">
+
+<div class="timeline-item fade-in">
+<div class="timeline-dot"></div>
+<div class="timeline-header">
+<span class="timeline-role">Consultant</span>
+<span class="timeline-date">Sept 2024 - Present</span>
+</div>
+<div class="timeline-company">Wipro Limited &middot; Client: Apple Inc.</div>
+
+<span class="project-tag">SLM Retrofit and Remediation</span>
+<p class="timeline-desc">Executed code retrofitting and remediation across an intermediary ECC-S/4HANA landscape spanning Apple's large-scale enterprise custom codebase, ensuring compatibility on both sides during the transition.</p>
+
+<span class="project-tag">MDG Clean Core</span>
+<p class="timeline-desc">Worked on Clean Core remediation using ABAP Test Cockpit (ATC) - assessed custom code against S/4HANA extensibility principles and replaced non-cloud-released objects to keep the system upgrade-ready.</p>
+
+<span class="project-tag">Logistics Integrations</span>
+<p class="timeline-desc">Delivered RICEF developments and CDS Views to Apple's enterprise development standards, including enhancements to the Logistics Management System: editable fields, custom admin authorization validation, and product/flight dashboards.</p>
+
+<span class="project-tag">Operational</span>
+<p class="timeline-desc">Handled end-to-end delivery coordination for change requests across functional and QA teams - requirements clarification, scope definition, defect triage, root cause analysis, and production handover.</p>
+</div>
+
+<div class="timeline-item fade-in">
+<div class="timeline-dot"></div>
+<div class="timeline-header">
+<span class="timeline-role">Senior Software Engineer</span>
+<span class="timeline-date">Nov 2020 - Sept 2024</span>
+</div>
+<div class="timeline-company">HCL Technologies &middot; Client: Consumers Energy (IS Utilities)</div>
+
+<span class="project-tag">SAP Data Archiving Optimization</span>
+<p class="timeline-desc">Proposed and drove a SAP data archiving initiative that reduced database storage by 50% and cut data residency to 3 years, enabling dynamic data retrieval from OpenText Server for standard T-codes via BAPIs and custom enhancements. Recognised by the IT Director for the cost savings delivered.</p>
+
+<span class="project-tag">Smartforms Reconciliation Report Automation</span>
+<p class="timeline-desc">Built and deployed a SmartForms-based reconciliation report that extracts and aggregates data from 8 SAP tables daily, with automated email distribution - eliminating recurring manual reporting effort.</p>
+
+<span class="project-tag">Metadata Extraction Automation</span>
+<p class="timeline-desc">Developed an ABAP program to extract metadata from 17 SAP database tables into CSV files accessible via the AL11 directory, removing the need for manual SQVI creation and raw data deduction.</p>
+
+<span class="project-tag">Redwood to ServiceNow Incident Automation</span>
+<p class="timeline-desc">Initiated and delivered a Redwood automation that auto-creates and prioritises incidents in ServiceNow for SAP jobs breaching runtime limits or encountering errors - significantly reducing manual monitoring effort for the support team.</p>
+
+<span class="project-tag">SPUR / PUAA / EERP / ECC to HANA Migration</span>
+<p class="timeline-desc">Developed ALV reports, custom function modules, and Z-tables across utility billing projects. Integrated GEOTAB fleet data into SAP. Automated rebate calculations via BAPIs and Redwood. Performed ATC analysis, redesigned multi-join queries as annotated CDS Views, and configured Eclipse ADT for the developer team.</p>
+
+<span class="project-tag">Operational</span>
+<p class="timeline-desc">Collaborated with business analysts to gather and translate requirements into technical specifications across SD, MM, FICA, and Billing modules. Resolved incident tickets with root cause analysis, provided on-call support for ABAP runtime dumps, and conducted knowledge transfer sessions for all delivered projects.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section section-alt" id="projects">
+<div class="section-inner">
+<div class="accent-bar"></div>
+<p class="section-label">Projects</p>
+<h2 class="section-title">What I have built</h2>
+<div class="projects-grid">
+
+<div class="project-card fade-in">
+<h3>SAP Data Archiving Optimization</h3>
+<p class="project-type">Enterprise Automation &middot; Consumers Energy</p>
+<p>Proposed and drove a data archiving initiative using OpenText, BAPIs, and custom enhancements that reduced database storage by 50%.</p>
+<ul class="project-outcomes">
+<li>50% reduction in database storage</li>
+<li>Data residency cut to 3 years</li>
+<li>Dynamic retrieval for standard T-codes</li>
+<li>Recognised by IT Director</li>
+</ul>
+<div class="tech-pills"><span class="tech-pill">BAPIs</span><span class="tech-pill">Enhancements</span><span class="tech-pill">OpenText</span></div>
+</div>
+
+<div class="project-card fade-in">
+<h3>SmartForms Reconciliation Automation</h3>
+<p class="project-type">Reporting Automation &middot; Consumers Energy</p>
+<p>Built a SmartForms-based reconciliation report aggregating data from 8 SAP tables daily with automated email distribution.</p>
+<ul class="project-outcomes">
+<li>Eliminated manual reporting entirely</li>
+<li>Daily automated aggregation from 8 tables</li>
+<li>Automated email distribution</li>
+</ul>
+<div class="tech-pills"><span class="tech-pill">SmartForms</span><span class="tech-pill">ABAP</span><span class="tech-pill">Redwood</span></div>
+</div>
+
+<div class="project-card fade-in">
+<h3>Metadata Extraction Automation</h3>
+<p class="project-type">Data Automation &middot; Consumers Energy</p>
+<p>Developed an ABAP program to extract metadata from 17 SAP database tables into CSV files via AL11 directory.</p>
+<ul class="project-outcomes">
+<li>17 table metadata extraction automated</li>
+<li>Removed manual SQVI creation need</li>
+<li>CSV output via AL11</li>
+</ul>
+<div class="tech-pills"><span class="tech-pill">ABAP</span><span class="tech-pill">AL11</span><span class="tech-pill">SQVI</span></div>
+</div>
+
+<div class="project-card fade-in">
+<h3>Redwood to ServiceNow Automation</h3>
+<p class="project-type">Operations Automation &middot; Consumers Energy</p>
+<p>Initiated a Redwood automation that auto-creates and prioritises incidents in ServiceNow for SAP jobs breaching runtime limits.</p>
+<ul class="project-outcomes">
+<li>Automated incident creation</li>
+<li>Reduced manual monitoring significantly</li>
+<li>Real-time alerting for job failures</li>
+</ul>
+<div class="tech-pills"><span class="tech-pill">Redwood</span><span class="tech-pill">ServiceNow</span><span class="tech-pill">ABAP</span></div>
+</div>
+
+<div class="project-card fade-in">
+<h3>Summer Peak Usage Rates (SPUR)</h3>
+<p class="project-type">Utility Billing &middot; Consumers Energy</p>
+<p>Developed ALV reports for net metering and generation credits with custom function modules for billing calculations.</p>
+<ul class="project-outcomes">
+<li>ALV reports for net metering</li>
+<li>Custom FMs for discount calculations</li>
+<li>Z-tables for credit status tracking</li>
+</ul>
+<div class="tech-pills"><span class="tech-pill">ALV</span><span class="tech-pill">Function Modules</span><span class="tech-pill">Z-tables</span></div>
+</div>
+
+<div class="project-card fade-in">
+<h3>PUAA - Fleet Integration</h3>
+<p class="project-type">System Integration &middot; Consumers Energy</p>
+<p>Integrated fleet issue data from GEOTAB into SAP, automating work order creation and technical completion.</p>
+<ul class="project-outcomes">
+<li>GEOTAB data integrated into SAP</li>
+<li>Automated work order creation</li>
+<li>Status-based technical completion</li>
+</ul>
+<div class="tech-pills"><span class="tech-pill">Standard FMs</span><span class="tech-pill">Custom FMs</span><span class="tech-pill">ABAP</span></div>
+</div>
+
+<div class="project-card fade-in">
+<h3>Energy Efficiency Rebates (EERP)</h3>
+<p class="project-type">Financial Automation &middot; Consumers Energy</p>
+<p>Automated rebate calculations from vendor files with CSV generation for validation and quarterly Redwood reporting.</p>
+<ul class="project-outcomes">
+<li>Rebate calculations fully automated</li>
+<li>CSV files for vendor validation</li>
+<li>Quarterly reports via Redwood</li>
+</ul>
+<div class="tech-pills"><span class="tech-pill">BAPIs</span><span class="tech-pill">ALV</span><span class="tech-pill">Redwood</span></div>
+</div>
+
+<div class="project-card fade-in">
+<h3>ECC to HANA Migration</h3>
+<p class="project-type">S/4HANA Migration &middot; Consumers Energy</p>
+<p>Performed ATC analysis, redesigned legacy queries as annotated CDS Views, and configured Eclipse ADT for the team.</p>
+<ul class="project-outcomes">
+<li>Legacy code remediated for HANA</li>
+<li>Multi-join queries replaced with CDS Views</li>
+<li>Eclipse ADT configured for remote team</li>
+</ul>
+<div class="tech-pills"><span class="tech-pill">ATC</span><span class="tech-pill">CDS Views</span><span class="tech-pill">Eclipse ADT</span></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+<div class="section-inner">
+<div class="accent-bar"></div>
+<p class="section-label">Skills</p>
+<h2 class="section-title">What I work with</h2>
+<div class="skills-grid">
+
+<div class="skill-group fade-in">
+<h3>SAP Development</h3>
+<div class="skill-item"><div class="skill-name"><span>ABAP on HANA</span><span>95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>RICEF Objects</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>BAPIs / RFCs / OData</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>SmartForms / Adobe Forms</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+</div>
+
+<div class="skill-group fade-in">
+<h3>S/4HANA and Clean Core</h3>
+<div class="skill-item"><div class="skill-name"><span>Clean Core Remediation</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>CDS Views</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>S/4HANA Extensibility</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>Code Retrofitting</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+</div>
+
+<div class="skill-group fade-in">
+<h3>Tools and Platforms</h3>
+<div class="skill-item"><div class="skill-name"><span>Eclipse ADT / ATC</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>Redwood Scheduler</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>SAP Solution Manager</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>Jira / Azure DevOps</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+</div>
+
+<div class="skill-group fade-in">
+<h3>Delivery and Coordination</h3>
+<div class="skill-item"><div class="skill-name"><span>Requirements Elicitation</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>Migration Planning</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>Defect Triage / RCA</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+<div class="skill-item"><div class="skill-name"><span>Cross-Team Coordination</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section section-alt" id="certifications">
+<div class="section-inner">
+<div class="accent-bar"></div>
+<p class="section-label">Certifications</p>
+<h2 class="section-title">Verified credentials</h2>
+<div class="cert-grid">
+
+<div class="cert-card fade-in">
+<img src="images/sap_abap_cloud.jpg" alt="SAP ABAP Cloud Certification" class="cert-img">
+<div class="cert-body">
+<h3>SAP Certified - Back-End Developer - ABAP Cloud</h3>
+<p>Issued: Mar 2024 &middot; Expires: Jan 2027 &middot; SAP</p>
+<a href="https://www.credly.com/badges/98e4fa5f-7390-414e-b323-9d65b31494d8" target="_blank" class="cert-link">Verify on Credly &#8599;</a>
+</div>
+</div>
+
+<div class="cert-card fade-in">
+<img src="images/sap_cap.jpg" alt="SAP CAP Certification" class="cert-img">
+<div class="cert-body">
+<h3>SAP Certified - Backend Developer - SAP CAP</h3>
+<p>Issued: Sep 2025 &middot; Expires: Jun 2027 &middot; SAP</p>
+<a href="https://www.credly.com/badges/0c10d37b-7591-46b7-9c0a-cca90fcc4d3c" target="_blank" class="cert-link">Verify on Credly &#8599;</a>
+</div>
+</div>
+
+<div class="cert-card fade-in">
+<img src="images/sap_tech_consultant.jpg" alt="SAP Technology Consultant" class="cert-img">
+<div class="cert-body">
+<h3>SAP Technology Consultant - Professional Certificate</h3>
+<p>Issued: May 2023 &middot; Coursera / SAP</p>
+<a href="https://coursera.org/verify/professional-cert/Z4L9L9PFHZ4V" target="_blank" class="cert-link">Verify on Coursera &#8599;</a>
+</div>
+</div>
+
+<div class="cert-card fade-in">
+<img src="images/sap_s4hana.jpg" alt="SAP S/4HANA Specialization" class="cert-img">
+<div class="cert-body">
+<h3>SAP S/4HANA: From ABAP to Cloud-Ready Applications</h3>
+<p>Issued: Sep 2025 &middot; Coursera / Board Infinity</p>
+<a href="https://coursera.org/verify/specialization/Z5D58X44YF1I" target="_blank" class="cert-link">Verify on Coursera &#8599;</a>
+</div>
+</div>
+
+<div class="cert-card fade-in">
+<img src="images/hana_sde.jpg" alt="Software Development on SAP HANA" class="cert-img">
+<div class="cert-body">
+<h3>Software Development on SAP HANA</h3>
+<p>Issued: Sep 2025 &middot; Coursera / SkillUp</p>
+<a href="https://coursera.org/verify/J30D2BEE2W0Z" target="_blank" class="cert-link">Verify on Coursera &#8599;</a>
+</div>
+</div>
+
+<div class="cert-card fade-in">
+<img src="images/tss_certificate.jpg" alt="HCL Tech Bee Certificate" class="cert-img">
+<div class="cert-body">
+<h3>Tech Bee - HCL's Early Career Program</h3>
+<p>Jun 2019 - Nov 2020 &middot; Score: 7.73 &middot; HCL Technologies</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section" id="achievements">
+<div class="section-inner">
+<div class="accent-bar"></div>
+<p class="section-label">Achievements</p>
+<h2 class="section-title">Recognition earned through delivery</h2>
+<div class="achieve-grid">
+
+<div class="achieve-card fade-in">
+<img src="images/appreciation.jpg" alt="Certificate of Appreciation - Data Archiving">
+<div class="achieve-body">
+<span class="achieve-badge">Professional &middot; 2023</span>
+<h3>IT Director Recognition - Data Archiving</h3>
+<p class="org">HCL Technologies / Consumers Energy</p>
+<p>Recognised by Rae Anne Tolonen (Director, IT Customer Product Family) and Mudit Mehra (IT Service Director, HCLTech) for reducing the residency period for residential billing data from 6 years to 3 years.</p>
+</div>
+</div>
+
+<div class="achieve-card fade-in" style="display:flex;flex-direction:column;justify-content:center">
+<div class="achieve-body">
+<span class="achieve-badge">Professional &middot; 2020-2024</span>
+<h3>Achievers League - Consecutive Years</h3>
+<p class="org">HCL Technologies</p>
+<p>Earned Achievers League recognition every year since 2020 for consistent high performance and delivery across multiple project initiatives at Consumers Energy.</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section section-alt" id="education">
+<div class="section-inner">
+<div class="accent-bar"></div>
+<p class="section-label">Education</p>
+<h2 class="section-title">Academic background</h2>
+<div class="edu-grid">
+
+<div class="edu-card fade-in">
+<h3>Master of Computer Applications</h3>
+<p class="school">SASTRA University, Thanjavur</p>
+<ul class="edu-list">
+<li>Advanced computing and software engineering</li>
+<li>Built foundation for enterprise development</li>
+<li>Applied learning directly to SAP ABAP work</li>
+</ul>
+</div>
+
+<div class="edu-card fade-in">
+<h3>Bachelor of Computer Applications</h3>
+<p class="school">SASTRA University, Thanjavur</p>
+<ul class="edu-list">
+<li>Core computer science fundamentals</li>
+<li>Programming foundations in Java and DBMS</li>
+<li>Entry point into professional IT career</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+<div class="section-inner">
+<div class="accent-bar"></div>
+<p class="section-label">Contact</p>
+<h2 class="section-title">Let's connect</h2>
+<div class="contact-grid">
+
+<div class="contact-form">
+<h3>Send me a message</h3>
+<div class="form-group"><label>Full name</label><input type="text" id="c-name" placeholder="Your name"></div>
+<div class="form-group"><label>Email address</label><input type="email" id="c-email" placeholder="you@company.com"></div>
+<div class="form-group"><label>Subject</label><input type="text" id="c-subject" placeholder="What is this about?"></div>
+<div class="form-group"><label>Message</label><textarea id="c-message" placeholder="Tell me more..."></textarea></div>
+<button class="btn-send" onclick="sendMail()">Send message</button>
+</div>
+
+<div class="contact-info">
+<h3>Contact information</h3>
+<p class="sub">Open to global opportunities and onsite roles</p>
+<div class="info-row"><div class="info-icon">@</div><a href="mailto:contact@krishnanshu.tech">contact@krishnanshu.tech</a></div>
+<div class="info-row"><div class="info-icon">P</div><a href="tel:+919999497563">+91 9999497563</a></div>
+<div class="info-row"><div class="info-icon">L</div><span>India (open to global relocation)</span></div>
+<div class="contact-social">
+<a href="https://linkedin.com/in/krishnanshugrover" target="_blank" title="LinkedIn">in</a>
+<a href="mailto:contact@krishnanshu.tech" title="Email">@</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<p class="footer-tag">Krishnanshu Grover</p>
+<p>Building enterprise SAP systems that work - one clean line of ABAP at a time.</p>
+</footer>
+
+<script>
+// Scroll animations
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+// Skill bar animation
+const skillObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.width+'%'}})},{threshold:0.1});
+document.querySelectorAll('.skill-fill').forEach(el=>{el.style.width='0%';skillObserver.observe(el)});
+
+// Contact form mailto
+function sendMail(){
+const name=document.getElementById('c-name').value;
+const email=document.getElementById('c-email').value;
+const subject=document.getElementById('c-subject').value;
+const message=document.getElementById('c-message').value;
+const body=`Hi Krishnanshu,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
+window.open(`mailto:contact@krishnanshu.tech?subject=${encodeURIComponent(subject)}&body=${body}`);
+}
+
+// Nav close on link click (mobile)
+document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('open')})});
+</script>
+
+</body>
+</html>
